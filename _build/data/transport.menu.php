@@ -2,7 +2,7 @@
 $menu = $modx->newObject('modMenu');
 $menu->fromArray(array(
   'text'        => PKG_NAME,
-  'parent'      => 'refresh_site',
+  'parent'      => 'components',
   'namespace'   => PKG_NAME_LOWER,
   'description' => PKG_NAME_LOWER . '.menu_desc',
   'menuindex'   => 0,
