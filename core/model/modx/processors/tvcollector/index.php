@@ -1,9 +1,12 @@
 <?php
 /**
  * TVCollector
+ * Processor for updating data of all resources.
  *
  * @package TVCollector
  * @author Callisto
+ * @source https://github.com/callisto2410/TVCollector
+ *
  */
 $modx->lexicon->load('tvcollector:default');
 $resources = $modx->getCollection('modResource');
@@ -11,10 +14,9 @@ $counter = 0;
 
 
 foreach ( $resources as $resource ) {
-  $template = $resource->get('template');
-  $template = $modx->getObject('modTemplate', $template);
-
+  $template = $modx->getObject('modTemplate', $resource->get('template'));
   $tvs = $template->getTemplateVarList();
+
   if ( $tvs !== false ) {
 
     $tvcollector = array();

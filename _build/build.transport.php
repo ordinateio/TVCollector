@@ -4,6 +4,7 @@
 *
 * @package TVCollector
 * @author Callisto
+* @source https://github.com/callisto2410/TVCollector
 */
 // =============================================================================
 $tstart = explode(' ', microtime());
@@ -87,11 +88,6 @@ $attr = array(
           xPDOTransport::UPDATE_OBJECT => false,
         ),
       ),
-    ),
-    'Tv' => array(
-      xPDOTransport::UNIQUE_KEY    => 'name',
-      xPDOTransport::PRESERVE_KEYS => false,
-  		xPDOTransport::UPDATE_OBJECT => true,
     ),
   ),
 );
@@ -197,6 +193,7 @@ if ( defined('PKG_AUTO_INSTALL') && PKG_AUTO_INSTALL ) {
 
 
 // =============================================================================
+// and finish
 $tend = explode(' ', microtime());
 $tend = $tend[1] + $tend[0];
 $totalTime = sprintf("%2.4f s", ($tend - $tstart));

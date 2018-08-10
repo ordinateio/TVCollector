@@ -1,17 +1,19 @@
 <?php
 /**
  * TVCollector
+ * Save and output additional fields.
  *
  * @package TVCollector
  * @author Callisto
+ * @source https://github.com/callisto2410/TVCollector
+ *
  */
 switch ( $modx->event->name ) {
 
   case 'OnDocFormSave':
-    $template = $resource->get('template');
-    $template = $modx->getObject('modTemplate', $template);
-
+    $template = $modx->getObject('modTemplate', $resource->get('template'));
     $tvs = $template->getTemplateVarList();
+
     if ( $tvs !== false ) {
 
       $tvcollector = array();
@@ -29,9 +31,9 @@ switch ( $modx->event->name ) {
 
 
   case 'OnLoadWebDocument':
-    $tvcollector = $modx->resource->get('properties');
+    $properties = $modx->resource->get('properties');
     $modx->toPlaceholders(array(
-      'tvc' => $tvcollector['tvc']
+      'tvc' => $properties['tvc']
     ));
     break;
 
