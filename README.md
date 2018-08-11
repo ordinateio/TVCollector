@@ -1,7 +1,6 @@
 # TVCollector
 
-This extension will help you access additional fields in the fastest way and will greatly enhance the performance of your site.
-
+This MODx extension will help you quickly access additional fields and greatly improve the performance of your site.
 
 ---
 
@@ -29,10 +28,12 @@ This extension will help you access additional fields in the fastest way and wil
 ]]
 ```
 
+or in chunk:
 ```
 [[+properties.tvc.tv1]]
 [[+properties.tvc.tv2]]
 [[+properties.tvc.tv3]]
+...
 ```
 It does not need to include additional fields for getResources, this will greatly speed up the selection.
 
@@ -42,9 +43,9 @@ It does not need to include additional fields for getResources, this will greatl
 
 ### How to use it with fastField:
 ```
-[[#1.properties.tvc.tv1]]
-[[#1.properties.tvc.tv2]]
-[[#1.properties.tvc.tv3]]
+[[#1.prop.tvc.tv1]]
+[[#1.prop.tvc.tv2]]
+[[#1.prop.tvc.tv3]]
 ...
 ```
 
@@ -52,6 +53,6 @@ It does not need to include additional fields for getResources, this will greatl
 ---
 
 
-If you installed this extension on an old site or programmatically changed additional fields, just click on this menu item and wait until the data is updated.
+If you installed this extension on an old site or programmatically changed additional fields, just click this menu item and wait for the data to be updated.
 
 ![screenshot](screenshots/img-1.png)

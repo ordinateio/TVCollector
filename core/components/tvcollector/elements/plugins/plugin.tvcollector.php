@@ -31,9 +31,10 @@ switch ( $modx->event->name ) {
 
 
   case 'OnLoadWebDocument':
-    $properties = $modx->resource->get('properties');
+    $tvcollector = $modx->resource->get('properties');
+    $tvcollector = is_array($tvcollector) && array_key_exists('tvc', $tvcollector) ? $tvcollector['tvc']  : '';
     $modx->toPlaceholders(array(
-      'tvc' => $properties['tvc']
+      'tvc' => $tvcollector
     ));
     break;
 
