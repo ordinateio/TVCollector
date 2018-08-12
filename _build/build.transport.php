@@ -5,6 +5,7 @@
 * @package TVCollector
 * @author Callisto
 * @source https://github.com/callisto2410/TVCollector
+*
 */
 // =============================================================================
 $tstart = explode(' ', microtime());
@@ -19,7 +20,7 @@ set_time_limit(0);
 define('PKG_NAME', 'TVCollector');
 define('PKG_NAME_LOWER', 'tvcollector');
 define('PKG_VERSION', '0.1.0');
-define('PKG_RELEASE', 'beta');
+define('PKG_RELEASE', 'pl');
 define('PKG_AUTO_INSTALL', false);
 
 $root = dirname(dirname(__FILE__)) . '/';
@@ -58,7 +59,7 @@ $builder->registerNamespace(PKG_NAME_LOWER, false, true, '{core_path}components/
 
 
 // =============================================================================
-// Add some magic
+// Add category
 $category = $modx->newObject('modCategory');
 $category->set('id', 1);
 $category->set('category', PKG_NAME);

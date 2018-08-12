@@ -4,6 +4,7 @@
  *
  * @package TVCollector
  * @subpackage lexicon
+ *
  */
 $_lang['tvcollector'] = 'TVCollector';
 
