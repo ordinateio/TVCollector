@@ -2,10 +2,11 @@
 
 This MODx extension will help you quickly access additional fields and greatly improve the performance of your site.
 
+
 ---
 
 
-### To display the required field of the current page, use this:
+### To display the current resource field, use:
 ```
 [[+tvc.tv1]]
 [[+tvc.tv2]]
@@ -13,14 +14,13 @@ This MODx extension will help you quickly access additional fields and greatly i
 ...
 ```
 
-- **tvc** - this is the prefix
-- **tv1** - this is the name of the additional field
+**tv1** - this is the name of the additional field.
 
 
 ---
 
 
-### How to use it with getResources:
+### To display the required field with getResources, use:
 ```
 [[getResources?
   &parents=`0`
@@ -41,7 +41,7 @@ It does not need to include additional fields for getResources, this will greatl
 ---
 
 
-### How to use it with fastField:
+### To display the required field with fastField, use:
 ```
 [[#1.prop.tvc.tv1]]
 [[#1.prop.tvc.tv2]]
@@ -53,6 +53,6 @@ It does not need to include additional fields for getResources, this will greatl
 ---
 
 
-If you installed this extension on an old site or programmatically changed additional fields, just click this menu item and wait for the data to be updated.
+If you installed this extension on an old site, or programmatically changed additional fields, or simply want to update all data, just click this menu item and wait for the data to be updated.
 
 ![screenshot](screenshots/img-1.png)
