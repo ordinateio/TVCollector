@@ -194,7 +194,7 @@ if ( defined('PKG_AUTO_INSTALL') && PKG_AUTO_INSTALL ) {
 
 
 // =============================================================================
-// and finish
+// And finish
 $tend = explode(' ', microtime());
 $tend = $tend[1] + $tend[0];
 $totalTime = sprintf("%2.4f s", ($tend - $tstart));
