@@ -21,7 +21,7 @@ define('PKG_NAME', 'TVCollector');
 define('PKG_NAME_LOWER', 'tvcollector');
 define('PKG_VERSION', '0.2.0');
 define('PKG_RELEASE', 'pl');
-define('PKG_AUTO_INSTALL', false);
+define('PKG_AUTO_INSTALL', true);
 
 $root = dirname(dirname(__FILE__)) . '/';
 $sources = array(
@@ -67,7 +67,7 @@ $category->set('category', PKG_NAME);
 // Packaging in plugins
 $modx->log(modX::LOG_LEVEL_INFO, 'Packaging in plugins...');
 $plugins = include $sources['data'] . 'transport.plugins.php';
-if ( empty($plugins) ) $modx->log(modX::LOG_LEVEL_ERROR,'Could not package in snippets.');
+if ( empty($plugins) ) $modx->log(modX::LOG_LEVEL_ERROR, 'Could not package in snippets.');
 $category->addMany($plugins);
 
 // Create category
@@ -114,20 +114,24 @@ $builder->putVehicle($vehicle);
 $modx->log(modX::LOG_LEVEL_INFO, 'Packaging in menu...');
 $menu = include $sources['data'] . 'transport.menu.php';
 if ( empty($menu) ) $modx->log(modX::LOG_LEVEL_ERROR, 'Could not package in menu.');
-$vehicle = $builder->createVehicle($menu, array(
-  xPDOTransport::UNIQUE_KEY      => 'text',
-  xPDOTransport::PRESERVE_KEYS   => true,
-  xPDOTransport::UPDATE_OBJECT   => true,
-  xPDOTransport::RELATED_OBJECTS => true,
-  xPDOTransport::RELATED_OBJECT_ATTRIBUTES => array (
-    'Action' => array (
-      xPDOTransport::UNIQUE_KEY    => array ('namespace', 'controller'),
-      xPDOTransport::PRESERVE_KEYS => false,
-      xPDOTransport::UPDATE_OBJECT => true,
-    ),
-  ),
-));
-$builder->putVehicle($vehicle);
+else {
+  for ( $i = 0; $i < count($menu); $i++ ) {
+    $vehicle = $builder->createVehicle($menu[$i], array(
+      xPDOTransport::UNIQUE_KEY      => 'text',
+      xPDOTransport::PRESERVE_KEYS   => true,
+      xPDOTransport::UPDATE_OBJECT   => true,
+      xPDOTransport::RELATED_OBJECTS => true,
+      xPDOTransport::RELATED_OBJECT_ATTRIBUTES => array (
+        'Action' => array (
+          xPDOTransport::UNIQUE_KEY    => array ('namespace', 'controller'),
+          xPDOTransport::PRESERVE_KEYS => false,
+          xPDOTransport::UPDATE_OBJECT => true,
+        ),
+      ),
+    ));
+    $builder->putVehicle($vehicle);
+  }
+}
 unset($vehicle, $menu);
 // =============================================================================
 
