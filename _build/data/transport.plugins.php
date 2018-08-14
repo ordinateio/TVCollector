@@ -1,8 +1,8 @@
 <?php
 function getPluginContent($filename) {
-  $o = file_get_contents($filename);
-  $o = trim( str_replace(array('<?php', '?>'), '', $o) );
-  return $o;
+  $output = file_get_contents($filename);
+  $output = trim( str_replace(array('<?php', '?>'), '', $output) );
+  return $output;
 }
 
 
