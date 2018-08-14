@@ -11,7 +11,7 @@ var console = MODx.load({
         MODx.Ajax.request({
           url: MODx.config.connector_url,
           params: {
-            action:   'tvcollector/index',
+            action:   'tvcollector/clear',
             register: register,
             topic:    topic
           },

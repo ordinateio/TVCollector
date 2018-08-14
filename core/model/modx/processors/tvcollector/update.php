@@ -1,7 +1,7 @@
 <?php
 /**
  * TVCollector
- * Processor for updating data of all resources.
+ * Update data for all resources.
  *
  * @package TVCollector
  * @author Callisto
@@ -26,27 +26,28 @@ foreach ( $resources as $resource ) {
       $tvcollector[$tvName] = $resource->getTVValue($tvId);
     }
 
-    $resource->setProperties($tvcollector, 'tvc');
+    $resource->setProperties($tvcollector, 'tvc', false);
     if ( $resource->save() !== false ) {
-      $modx->log(modX::LOG_LEVEL_INFO, $modx->lexicon('tvcollector.resource')
-        . $resource->id
-        . $modx->lexicon('tvcollector.data_updated')
-      );
+      $modx->log(modX::LOG_LEVEL_INFO, sprintf('%s %s: OK.',
+        $modx->lexicon('tvcollector.resource'),
+        $resource->id
+      ));
       $counter++;
     } else {
-      $modx->log(modX::LOG_LEVEL_ERROR, $modx->lexicon('tvcollector.resource')
-        . $resource->id
-        . $modx->lexicon('tvcollector.could_not_save')
-      );
+      $modx->log(modX::LOG_LEVEL_ERROR, sprintf('%s %s: %s.',
+        $modx->lexicon('tvcollector.resource'),
+        $resource->id,
+        $modx->lexicon('tvcollector.could_not_save')
+      ));
     }
   }
 }
 
 
-$modx->log(modX::LOG_LEVEL_INFO, $modx->lexicon('tvcollector.processed')
-  . $counter
-  . $modx->lexicon('tvcollector.resources_out_of')
-  . count($resources)
-);
-$modx->cacheManager->clearCache();
+$modx->log(modX::LOG_LEVEL_INFO, sprintf('%s %s %s %s.',
+  $modx->lexicon('tvcollector.processed'),
+  $counter,
+  $modx->lexicon('tvcollector.resources_out_of'),
+  count($resources)
+));
 $modx->log(modX::LOG_LEVEL_INFO, 'COMPLETED');
