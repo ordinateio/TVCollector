@@ -1,4 +1,5 @@
 _build/build.config.php
+_packages
 .idea
 .exclude
 Makefile

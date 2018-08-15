@@ -15,17 +15,13 @@ switch ( $modx->event->name ) {
     $tvs = $template->getTemplateVarList();
 
     if ( $tvs !== false ) {
-
       $tvcollector = array();
       foreach ( $tvs['collection'] as $tv ) {
-        $tvId = $tv->get('id');
-        $tvName = $tv->get('name');
-        $tvcollector[$tvName] = $resource->getTVValue($tvId);
+        $tvcollector[$tv->get('id')] = $resource->getTVValue($tv->get('name'));
       }
 
       $resource->setProperties($tvcollector, 'tvc');
       $resource->save();
-
     }
     break;
 

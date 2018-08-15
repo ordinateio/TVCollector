@@ -1,5 +1,16 @@
 Changelog for TVCollector
 
+TVCollector 0.4.0-pl
+-------------------
+- Localization correction
+- Fixing handlers for menu items
+- Added menu item Clear
+- Other minor fixes
+
+TVCollector 0.3.0-pl
+-------------------
+- Minor fixes
+
 TVCollector 0.2.0-pl
 -------------------
 - First Version

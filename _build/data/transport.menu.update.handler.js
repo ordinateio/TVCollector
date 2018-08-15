@@ -7,26 +7,25 @@ var console = MODx.load({
   show_filename: 0,
   listeners: {
     'shutdown': {
-      fn:function() {
-        MODx.Ajax.request({
-          url: MODx.config.connector_url,
-          params: {
-            action:   'tvcollector/update',
-            register: register,
-            topic:    topic
-          },
-          listeners: {
-            'success':{
-              fn:function() {
-                console.fireEvent('complete');
-              },
-              scope:this
-            }
-          }
-        });
-      },
-      scope:this
+      fn: function() {},
+      scope: this
     }
   }
+
 });
 console.show(Ext.getBody());
+
+MODx.Ajax.request({
+  url: MODx.config.connector_url,
+  params: {
+    action:   'tvcollector/update',
+    register: register,
+    topic:    topic
+  },
+  'success': {
+    fn: function() {
+      console.fireEvent('complete');
+    },
+    scope: this
+  }
+});
