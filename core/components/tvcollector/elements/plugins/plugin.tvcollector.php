@@ -12,7 +12,10 @@ switch ( $modx->event->name ) {
 
   case 'OnDocFormSave':
     $template = $modx->getObject('modTemplate', $resource->get('template'));
+    if ( is_null($template) ) break;
+
     $tvs = $template->getTemplateVarList();
+    if ( is_null($tvs) ) break;
 
     if ( $tvs !== false ) {
       $tvcollector = array();

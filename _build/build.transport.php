@@ -19,7 +19,7 @@ set_time_limit(0);
 // Necessary variables
 define('PKG_NAME', 'TVCollector');
 define('PKG_NAME_LOWER', 'tvcollector');
-define('PKG_VERSION', '0.4.0');
+define('PKG_VERSION', '0.5.0');
 define('PKG_RELEASE', 'pl');
 define('PKG_AUTO_INSTALL', false);
 
@@ -67,7 +67,7 @@ $category->set('category', PKG_NAME);
 // Packaging in plugins
 $modx->log(modX::LOG_LEVEL_INFO, 'Packaging in plugins...');
 $plugins = include $sources['data'] . 'transport.plugins.php';
-if ( empty($plugins) ) $modx->log(modX::LOG_LEVEL_ERROR, 'Could not package in snippets.');
+if ( empty($plugins) ) $modx->log(modX::LOG_LEVEL_ERROR, 'Could not package in plugins.');
 $category->addMany($plugins);
 
 // Create category

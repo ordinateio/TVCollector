@@ -26,6 +26,6 @@ MODx.Ajax.request({
     fn: function() {
       console.fireEvent('complete');
     },
-    scope:this
+    scope: this
   }
 });
