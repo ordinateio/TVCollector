@@ -16,7 +16,6 @@ $modx->log(modX::LOG_LEVEL_INFO, $modx->lexicon('tvcollector.data_cleaning'));
 set_time_limit(0);
 
 foreach ( $resources as $resource ) {
-
   $resource->setProperties(array(), 'tvc', false);
   if ( $resource->save() !== false ) {
     $modx->log(modX::LOG_LEVEL_INFO,
@@ -32,8 +31,8 @@ foreach ( $resources as $resource ) {
       ))
     );
   }
-  sleep(1);
 
+  sleep(1);
 }
 
 sleep(1);

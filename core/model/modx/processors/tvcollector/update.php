@@ -16,7 +16,6 @@ $modx->log(modX::LOG_LEVEL_INFO, $modx->lexicon('tvcollector.updating_data'));
 set_time_limit(0);
 
 foreach ( $resources as $resource ) {
-
   $template = $modx->getObject('modTemplate', $resource->get('template'));
   if ( is_null($template) ) continue;
 
@@ -25,7 +24,9 @@ foreach ( $resources as $resource ) {
 
   $tvcollector = array();
   foreach ( $tvs['collection'] as $tv ) {
-    $tvcollector[$tv->get('name')] = $resource->getTVValue($tv->get('id'));
+    $tvId = $tv->get('id');
+    $tvName = $tv->get('name');
+    $tvcollector[$tvName] = $resource->getTVValue($tvId);
   }
   $resource->setProperties($tvcollector, 'tvc', false);
 
@@ -43,8 +44,8 @@ foreach ( $resources as $resource ) {
       ))
     );
   }
+  
   sleep(1);
-
 }
 
 sleep(1);
