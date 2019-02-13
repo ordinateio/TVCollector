@@ -8,6 +8,7 @@
  * @source https://github.com/callisto2410/TVCollector
  *
  */
+
 $resources = $modx->getCollection('modResource');
 $modx->lexicon->load('tvcollector:default');
 $counter = 0;
@@ -44,7 +45,7 @@ foreach ( $resources as $resource ) {
       ))
     );
   }
-  
+
   sleep(1);
 }
 

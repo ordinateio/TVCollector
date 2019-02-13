@@ -8,9 +8,9 @@ This MODx extension will help you quickly access additional fields and greatly i
 
 ### To display the current resource field, use:
 ```
-[[+tvc.tv1]]
-[[+tvc.tv2]]
-[[+tvc.tv3]]
+[[*properties.tvc.tv1]]
+[[*properties.tvc.tv2]]
+[[*properties.tvc.tv3]]
 ...
 ```
 
