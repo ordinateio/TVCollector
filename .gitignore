@@ -1,5 +1,4 @@
-_build/build.config.php
-_packages
 .idea
-.exclude
-Makefile
+.vscode
+
+build.config.php
