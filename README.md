@@ -8,9 +8,9 @@ This MODx extension will help you quickly access additional fields and greatly i
 
 ### To display the current resource field, use:
 ```
-[[*properties.tvc.tv1]]
-[[*properties.tvc.tv2]]
-[[*properties.tvc.tv3]]
+[[+tvc.tv1]]
+[[+tvc.tv2]]
+[[+tvc.tv3]]
 ...
 ```
 
@@ -55,4 +55,4 @@ It does not need to include additional fields for getResources, this will greatl
 
 If you installed this extension on an old site, or programmatically changed additional fields, or simply want to update all data, just click this menu item and wait for the data to be updated.
 
-![screenshot](screenshots/img-1.png)
+![screenshot](screenshots/menu.png)

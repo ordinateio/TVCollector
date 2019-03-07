@@ -7,6 +7,7 @@
  * @author Callisto
  * @source https://github.com/callisto2410/TVCollector
  */
+set_time_limit(0);
 
 $resources = $modx->getCollection('modResource');
 $modx->lexicon->load('tvcollector:default');
@@ -14,47 +15,54 @@ $counter = 0;
 $sleep = 0.2;
 
 $modx->log(modX::LOG_LEVEL_INFO, $modx->lexicon('tvcollector.updating_data'));
-set_time_limit(0);
 
-foreach ( $resources as $resource ) {
-  $template = $modx->getObject('modTemplate', $resource->get('template'));
-  if ( is_null($template) ) continue;
+foreach ($resources as $resource) {
+  $tvs = $modx->getCollection('modTemplateVarResource', array(
+    'contentid' => $resource->get('id')
+  ));
 
-  $tvs = $template->getTemplateVarList();
-  if ( is_null($tvs) ) continue;
+  if (count($tvs) > 0) {
+    $tvcollector = array();
 
-  $tvcollector = array();
-  foreach ( $tvs['collection'] as $tv ) {
-    $tvId = $tv->get('id');
-    $tvName = $tv->get('name');
-    $tvcollector[$tvName] = $resource->getTVValue($tvId);
-  }
-  $resource->setProperties($tvcollector, 'tvc', false);
+    foreach ($tvs as $tv) {
+      $name = $tv->TemplateVar->get('name');
+      $value = $tv->get('value');
 
-  if ( $resource->save() !== false ) {
+      if (!empty($value)) {
+        $tvcollector[$name] = $value;
+      }
+    }
+
+    $resource->setProperties($tvcollector, 'tvc', false);
+    $ok = $resource->save();
+
+    if (!$ok) {
+      $modx->log(modX::LOG_LEVEL_WARN,
+        $modx->lexicon('tvcollector.resource_could_not_be_saved', array(
+          'id' => $resource->id
+        ))
+      );
+      continue;
+    }
+
     $modx->log(modX::LOG_LEVEL_INFO,
       $modx->lexicon('tvcollector.resource_successfully_updated', array(
         'id' => $resource->id
       ))
     );
     $counter++;
-  } else {
-    $modx->log(modX::LOG_LEVEL_WARN,
-      $modx->lexicon('tvcollector.resource_could_not_be_saved', array(
-        'id' => $resource->id
-      ))
-    );
   }
 
   sleep($sleep);
 }
 
-sleep($sleep);
+
+
 $modx->log(modX::LOG_LEVEL_INFO,
   $modx->lexicon('tvcollector.processed_resources_from', array(
     'counter'   => $counter,
     'resources' => count($resources),
   ))
 );
-sleep($sleep);
+
 $modx->log(modX::LOG_LEVEL_INFO, 'COMPLETED');
