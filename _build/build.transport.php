@@ -9,6 +9,7 @@
  */
 
 // -----------------------------------------------------------------------------
+// Start
 $tstart = explode(' ', microtime());
 $tstart = $tstart[1] + $tstart[0];
 set_time_limit(0);
@@ -20,7 +21,7 @@ set_time_limit(0);
 // Necessary variables
 define('PKG_NAME', 'TVCollector');
 define('PKG_NAME_LOWER', 'tvcollector');
-define('PKG_VERSION', '0.7.0');
+define('PKG_VERSION', '0.7.1');
 define('PKG_RELEASE', 'pl');
 define('PKG_AUTO_INSTALL', false);
 
@@ -60,16 +61,17 @@ $builder->registerNamespace(PKG_NAME_LOWER, false, true, '{core_path}components/
 
 
 // -----------------------------------------------------------------------------
-// Add category
+// Packing categories
 $category = $modx->newObject('modCategory');
 $category->set('id', 1);
 $category->set('category', PKG_NAME);
 
-// Packaging in plugins
-$modx->log(modX::LOG_LEVEL_INFO, 'Packaging in plugins...');
+// Packaging plugins
+$modx->log(modX::LOG_LEVEL_INFO, 'Packaging plugins...');
 $plugins = include $sources['data'] . 'transport.plugins.php';
+
 if (empty($plugins)) {
-  $modx->log(modX::LOG_LEVEL_ERROR, 'Could not package in plugins.');
+  $modx->log(modX::LOG_LEVEL_ERROR, 'Failed to pack plugins');
 }
 $category->addMany($plugins);
 
@@ -98,26 +100,30 @@ $attr = array(
 $vehicle = $builder->createVehicle($category, $attr);
 
 // Adding file resolvers
-$modx->log(modX::LOG_LEVEL_INFO, 'Adding file resolvers to category...');
+$modx->log(modX::LOG_LEVEL_INFO, 'Adding file resolvers to categories...');
 $vehicle->resolve('file', array(
   'source' => $sources['source_core'],
   'target' => "return MODX_CORE_PATH . 'components/';",
 ));
+
+$modx->log(modX::LOG_LEVEL_INFO, 'Adding file resolvers to processors...');
 $vehicle->resolve('file', array(
   'source' => $sources['processors'],
   'target' => "return MODX_CORE_PATH . 'model/modx/processors/';",
 ));
+
 $builder->putVehicle($vehicle);
 // -----------------------------------------------------------------------------
 
 
 
 // -----------------------------------------------------------------------------
-// Packaging in menu
-$modx->log(modX::LOG_LEVEL_INFO, 'Packaging in menu...');
+// Packing menu items
+$modx->log(modX::LOG_LEVEL_INFO, 'Packing menu items...');
 $menu = include $sources['data'] . 'transport.menu.php';
+
 if (empty($menu)) {
-  $modx->log(modX::LOG_LEVEL_ERROR, 'Could not package in menu.');
+  $modx->log(modX::LOG_LEVEL_ERROR, 'Failed to pack menu items.');
 } else {
   for ($i = 0; $i < count($menu); $i++) {
     $vehicle = $builder->createVehicle($menu[$i], array(
@@ -155,7 +161,7 @@ $builder->setPackageAttributes(array(
 
 // -----------------------------------------------------------------------------
 // Packing up transport package
-$modx->log(modX::LOG_LEVEL_INFO, 'Packing up transport package zip...');
+$modx->log(modX::LOG_LEVEL_INFO, 'Packing up transport package...');
 $builder->pack();
 // -----------------------------------------------------------------------------
 

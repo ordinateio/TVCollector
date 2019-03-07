@@ -1,5 +1,6 @@
 <?php
 $menu[0] = $modx->newObject('modMenu');
+
 $menu[0]->fromArray(array(
   'text'        => PKG_NAME,
   'parent'      => 'components',
@@ -9,7 +10,9 @@ $menu[0]->fromArray(array(
 ), '', true, true);
 
 
+
 $menu[1] = $modx->newObject('modMenu');
+
 $menu[1]->fromArray(array(
   'text'        => PKG_NAME_LOWER . '.menu_update',
   'parent'      => PKG_NAME,
@@ -20,7 +23,9 @@ $menu[1]->fromArray(array(
 ), '', true, true);
 
 
+
 $menu[2] = $modx->newObject('modMenu');
+
 $menu[2]->fromArray(array(
   'text'        => PKG_NAME_LOWER . '.menu_clear',
   'parent'      => PKG_NAME,
