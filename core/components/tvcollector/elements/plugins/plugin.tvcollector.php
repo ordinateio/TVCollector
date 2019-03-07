@@ -11,9 +11,9 @@
 
 switch ($modx->event->name) {
   case 'OnDocFormSave':
-
+    $id = $resource->get('id');
     $tvs = $modx->getCollection('modTemplateVarResource', array(
-      'contentid' => $resource->get('id')
+      'contentid' => $id
     ));
 
     if (count($tvs) > 0) {

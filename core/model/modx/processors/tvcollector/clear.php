@@ -18,8 +18,8 @@ $modx->log(modX::LOG_LEVEL_INFO, $modx->lexicon('tvcollector.data_cleaning'));
 
 foreach ($resources as $resource) {
   $resource->setProperties(array(), 'tvc', false);
-  $ok = $resource->save();
 
+  $ok = $resource->save();
   if (!$ok) {
     $modx->log(modX::LOG_LEVEL_WARN,
       $modx->lexicon('tvcollector.resource_could_not_be_saved', array(
@@ -34,6 +34,7 @@ foreach ($resources as $resource) {
       'id' => $resource->id
     ))
   );
+
   $counter++;
 
   sleep($sleep);
