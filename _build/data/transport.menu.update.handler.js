@@ -1,26 +1,28 @@
 var topic = '/tvcollector/';
 var register = 'mgr';
+
 var console = MODx.load({
-  xtype:         'modx-console',
-  register:      register,
-  topic:         topic,
+  xtype        : 'modx-console',
+  register     : register,
+  topic        : topic,
   show_filename: 0,
-  listeners: {
+  listeners    : {
     'shutdown': {
       fn: function() {},
       scope: this
     }
   }
-
 });
 console.show(Ext.getBody());
+
+
 
 MODx.Ajax.request({
   url: MODx.config.connector_url,
   params: {
-    action:   'tvcollector/update',
+    action  : 'tvcollector/update',
     register: register,
-    topic:    topic
+    topic   : topic
   },
   'success': {
     fn: function() {

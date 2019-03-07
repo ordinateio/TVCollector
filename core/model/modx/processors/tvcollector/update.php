@@ -6,11 +6,12 @@
  * @package TVCollector
  * @author Callisto
  * @source https://github.com/callisto2410/TVCollector
- *
  */
+
 $resources = $modx->getCollection('modResource');
 $modx->lexicon->load('tvcollector:default');
 $counter = 0;
+$sleep = 0.2;
 
 $modx->log(modX::LOG_LEVEL_INFO, $modx->lexicon('tvcollector.updating_data'));
 set_time_limit(0);
@@ -44,16 +45,16 @@ foreach ( $resources as $resource ) {
       ))
     );
   }
-  
-  sleep(1);
+
+  sleep($sleep);
 }
 
-sleep(1);
+sleep($sleep);
 $modx->log(modX::LOG_LEVEL_INFO,
   $modx->lexicon('tvcollector.processed_resources_from', array(
     'counter'   => $counter,
     'resources' => count($resources),
   ))
 );
-sleep(1);
+sleep($sleep);
 $modx->log(modX::LOG_LEVEL_INFO, 'COMPLETED');
