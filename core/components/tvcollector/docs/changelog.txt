@@ -1,5 +1,9 @@
 Changelog for TVCollector
 
+TVCollector 1.0.0-pl
+-------------------
+- Bump version
+
 TVCollector 0.7.20-pl
 -------------------
 - Reworked plugin
