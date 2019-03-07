@@ -21,9 +21,9 @@ set_time_limit(0);
 // Necessary variables
 define('PKG_NAME', 'TVCollector');
 define('PKG_NAME_LOWER', 'tvcollector');
-define('PKG_VERSION', '0.7.1');
+define('PKG_VERSION', '0.7.20');
 define('PKG_RELEASE', 'pl');
-define('PKG_AUTO_INSTALL', false);
+define('PKG_AUTO_INSTALL', true);
 
 $root = dirname(dirname(__FILE__)) . '/';
 $sources = array(

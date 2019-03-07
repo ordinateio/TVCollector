@@ -1,5 +1,14 @@
 Changelog for TVCollector
 
+TVCollector 0.7.20-pl
+-------------------
+- Reworked plugin
+- Reworked data update process
+- Reworked data cleaning process
+- Increased data processing speed
+- Empty fields are no longer saved
+- Other minor changes
+
 TVCollector 0.7.0-pl
 -------------------
 - Minor fixes

@@ -16,13 +16,13 @@ switch ($modx->event->name) {
       'contentid' => $resource->get('id')
     ));
 
-
     if (count($tvs) > 0) {
       $tvcollector = array();
 
       foreach ($tvs as $tv) {
         $name = $tv->TemplateVar->get('name');
         $value = $tv->get('value');
+
         if (!empty($value)) {
           $tvcollector[$name] = $value;
         }
@@ -32,6 +32,8 @@ switch ($modx->event->name) {
       $resource->save();
     }
   break;
+
+
 
   case 'OnLoadWebDocument':
     $tvcollector = $modx->resource->get('properties');
