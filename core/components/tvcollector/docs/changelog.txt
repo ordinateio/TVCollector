@@ -1,5 +1,9 @@
 Changelog for TVCollector
 
+TVCollector 1.0.1-pl
+-------------------
+- Minor changes
+
 TVCollector 1.0.0-pl
 -------------------
 - Bump version
@@ -15,26 +19,26 @@ TVCollector 0.7.20-pl
 
 TVCollector 0.7.0-pl
 -------------------
-- Minor fixes
+- Minor changes
 
 TVCollector 0.6.0-pl
 -------------------
-- Minor fixes
+- Minor changes
 
 TVCollector 0.5.0-pl
 -------------------
-- Minor fixes
+- Minor changes
 
 TVCollector 0.5.0-pl
 -------------------
 - Localization correction
 - Fixing handlers for menu items
 - Added menu item Clear
-- Other minor fixes
+- Other minor changes
 
 TVCollector 0.3.0-pl
 -------------------
-- Minor fixes
+- Minor changes
 
 TVCollector 0.2.0-pl
 -------------------

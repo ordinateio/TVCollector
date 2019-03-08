@@ -17,18 +17,18 @@ switch ($modx->event->name) {
     ));
 
     if (count($tvs) > 0) {
-      $tvcollector = array();
+      $properties = array();
 
       foreach ($tvs as $tv) {
         $name = $tv->TemplateVar->get('name');
         $value = $tv->get('value');
 
         if (!empty($value)) {
-          $tvcollector[$name] = $value;
+          $properties[$name] = $value;
         }
       }
 
-      $resource->setProperties($tvcollector, 'tvc', false);
+      $resource->setProperties($properties, 'tvc', false);
       $resource->save();
     }
   break;
@@ -36,11 +36,11 @@ switch ($modx->event->name) {
 
 
   case 'OnLoadWebDocument':
-    $tvcollector = $modx->resource->get('properties');
+    $properties = $modx->resource->get('properties');
 
-    if (is_array($tvcollector) && array_key_exists('tvc', $tvcollector)) {
+    if (is_array($properties) && array_key_exists('tvc', $properties)) {
       $modx->toPlaceholders(array(
-        'tvc' => $tvcollector['tvc']
+        'tvc' => $properties['tvc']
       ));
     }
   break;
