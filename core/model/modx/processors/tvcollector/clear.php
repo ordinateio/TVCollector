@@ -19,6 +19,7 @@ $modx->log(modX::LOG_LEVEL_INFO, $modx->lexicon('tvcollector.data_cleaning'));
 foreach ($resources as $resource) {
   $resource->setProperties(array(), 'tvc', false);
 
+  // use processors
   $ok = $resource->save();
   if (!$ok) {
     $modx->log(modX::LOG_LEVEL_WARN,

@@ -36,6 +36,7 @@ foreach ($resources as $resource) {
 
     $resource->setProperties($tvcollector, 'tvc', false);
 
+    // use processors
     $ok = $resource->save();
     if (!$ok) {
       $modx->log(modX::LOG_LEVEL_WARN,
