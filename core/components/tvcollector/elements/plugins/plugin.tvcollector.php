@@ -22,9 +22,9 @@ switch ($modx->event->name) {
       foreach ($tvs as $tv) {
         $name = $tv->TemplateVar->get('name');
         $value = $tv->get('value');
-        /*
+        /* TODO:
           need tests
-          replace it to just:
+          replace it to
           $properties[$name] = $value;
         */
         if (!empty($value)) {
