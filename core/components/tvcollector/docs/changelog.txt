@@ -1,5 +1,9 @@
 Changelog for TVCollector
 
+TVCollector 1.0.2-pl
+-------------------
+- Bugs fixed
+
 TVCollector 1.0.1-pl
 -------------------
 - Minor changes

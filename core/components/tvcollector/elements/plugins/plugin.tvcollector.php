@@ -22,21 +22,14 @@ switch ($modx->event->name) {
       foreach ($tvs as $tv) {
         $name = $tv->TemplateVar->get('name');
         $value = $tv->get('value');
-        /* TODO:
-          need tests
-          replace it to
-          $properties[$name] = $value;
-        */
-        if (!empty($value)) {
-          $properties[$name] = $value;
-        }
+
+        $properties[$name] = $value;
       }
 
       $resource->setProperties($properties, 'tvc', false);
       $resource->save();
     }
   break;
-
 
 
   case 'OnLoadWebDocument':

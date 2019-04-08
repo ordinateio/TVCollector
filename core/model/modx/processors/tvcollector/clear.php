@@ -12,14 +12,14 @@ set_time_limit(0);
 $resources = $modx->getCollection('modResource');
 $modx->lexicon->load('tvcollector:default');
 $counter = 0;
-$usleep = 100000;
+$usleep = 50000;
+
 
 $modx->log(modX::LOG_LEVEL_INFO, $modx->lexicon('tvcollector.data_cleaning'));
 
 foreach ($resources as $resource) {
   $resource->setProperties(array(), 'tvc', false);
 
-  // TODO: use processors
   $ok = $resource->save();
   if (!$ok) {
     $modx->log(modX::LOG_LEVEL_WARN,
@@ -37,10 +37,8 @@ foreach ($resources as $resource) {
   );
 
   $counter++;
-
   usleep($usleep);
 }
-
 
 
 $modx->log(modX::LOG_LEVEL_INFO,

@@ -21,7 +21,7 @@ set_time_limit(0);
 // Necessary variables
 define('PKG_NAME', 'TVCollector');
 define('PKG_NAME_LOWER', 'tvcollector');
-define('PKG_VERSION', '1.0.1');
+define('PKG_VERSION', '1.0.2');
 define('PKG_RELEASE', 'pl');
 define('PKG_AUTO_INSTALL', false);
 
