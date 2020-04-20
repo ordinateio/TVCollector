@@ -18,34 +18,34 @@ $usleep = 50000;
 $modx->log(modX::LOG_LEVEL_INFO, $modx->lexicon('tvcollector.data_cleaning'));
 
 foreach ($resources as $resource) {
-  $resource->setProperties(array(), 'tvc', false);
+    $resource->setProperties(array(), 'tvc', false);
 
-  $ok = $resource->save();
-  if (!$ok) {
-    $modx->log(modX::LOG_LEVEL_WARN,
-      $modx->lexicon('tvcollector.resource_could_not_be_saved', array(
-        'id' => $resource->id
-      ))
+    $ok = $resource->save();
+    if (!$ok) {
+        $modx->log(modX::LOG_LEVEL_WARN,
+            $modx->lexicon('tvcollector.resource_could_not_be_saved', array(
+                'id' => $resource->id
+            ))
+        );
+        continue;
+    }
+
+    $modx->log(modX::LOG_LEVEL_INFO,
+        $modx->lexicon('tvcollector.resource_successfully_updated', array(
+            'id' => $resource->id
+        ))
     );
-    continue;
-  }
 
-  $modx->log(modX::LOG_LEVEL_INFO,
-    $modx->lexicon('tvcollector.resource_successfully_updated', array(
-      'id' => $resource->id
-    ))
-  );
-
-  $counter++;
-  usleep($usleep);
+    $counter++;
+    usleep($usleep);
 }
 
 
 $modx->log(modX::LOG_LEVEL_INFO,
-  $modx->lexicon('tvcollector.processed_resources_from', array(
-    'counter'   => $counter,
-    'resources' => count($resources),
-  ))
+    $modx->lexicon('tvcollector.processed_resources_from', array(
+        'counter' => $counter,
+        'resources' => count($resources),
+    ))
 );
 
 $modx->log(modX::LOG_LEVEL_INFO, 'COMPLETED');
