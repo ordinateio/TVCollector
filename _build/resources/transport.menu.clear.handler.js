@@ -1,6 +1,5 @@
 var topic = '/tvcollector/';
 var register = 'mgr';
-
 var console = MODx.load({
     xtype: 'modx-console',
     register: register,
@@ -14,13 +13,11 @@ var console = MODx.load({
         }
     }
 });
-console.show(Ext.getBody());
-
 
 MODx.Ajax.request({
     url: MODx.config.connector_url,
     params: {
-        action: 'tvcollector/update',
+        action: 'tvcollector/clear',
         register: register,
         topic: topic
     },
@@ -31,3 +28,5 @@ MODx.Ajax.request({
         scope: this
     }
 });
+
+console.show(Ext.getBody());
