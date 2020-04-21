@@ -140,6 +140,7 @@ $time_end = explode(' ', microtime());
 $time_end = $time_end[1] + $time_end[0];
 $total_time = sprintf("%2.4f s", ($time_end - $time_start));
 
-$modx->log(modX::LOG_LEVEL_INFO, 'Package created. Execution time: ' . $total_time);
+$modx->log(modX::LOG_LEVEL_INFO, 'Package created, time: ' . $total_time);
+
 exit();
 // endregion
