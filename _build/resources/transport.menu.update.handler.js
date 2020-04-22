@@ -15,11 +15,12 @@ var console = MODx.load({
 });
 
 MODx.Ajax.request({
-    url: MODx.config.connector_url,
+    url: MODx.config['connector_url'],
     params: {
-        action: 'tvcollector/update',
+        action: 'tvcollector/processor',
         register: register,
-        topic: topic
+        topic: topic,
+        process: 'update'
     },
     'success': {
         fn: function () {
