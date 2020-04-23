@@ -6,7 +6,7 @@ var console = MODx.load({
     topic: topic,
     show_filename: 0,
     listeners: {
-        'shutdown': {
+        shutdown: {
             fn: function () {
                 MODx.clearCache();
             },
@@ -23,7 +23,7 @@ MODx.Ajax.request({
         topic: topic,
         process: 'update'
     },
-    'success': {
+    success: {
         fn: function () {
             console.fireEvent('complete');
         },
