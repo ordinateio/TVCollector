@@ -57,6 +57,7 @@ class TVCollectorProcessor extends modProcessor
             $this->clear();
         }
 
+        $this->modx->cacheManager->refresh();
         $this->printReport();
         $this->unlock();
 
