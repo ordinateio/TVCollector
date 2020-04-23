@@ -8,7 +8,6 @@ var console = MODx.load({
     listeners: {
         shutdown: {
             fn: function () {
-                MODx.clearCache();
             },
             scope: this
         }
