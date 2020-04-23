@@ -1,23 +1,26 @@
 <?php
 /**
- * English lexicon topic
+ * English lexicon topic.
  *
  * @package TVCollector
  * @subpackage lexicon
- *
+ * @author Callisto https://github.com/callisto2410
+ * @source https://github.com/callisto2410/TVCollector
  */
+
 $_lang['tvcollector'] = 'TVCollector';
+$_lang['tvcollector.menu_description'] = 'Update or clear the TVCollector data.';
+
+$_lang['tvcollector.menu_update'] = 'Update';
+$_lang['tvcollector.menu_update_description'] = 'Update the TVCollector data.';
+
+$_lang['tvcollector.menu_clear'] = 'Clear';
+$_lang['tvcollector.menu_clear_description'] = 'Clear the TVCollector data.';
+
 $_lang['tvcollector.updating_data'] = 'Updating data...';
 $_lang['tvcollector.data_cleaning'] = 'Data Cleaning...';
 
+$_lang['tvcollector.processing_slice'] = 'Slice processing: [[+slice]], resource range from [[+from]] to [[+to]]...';
+$_lang['tvcollector.already_running'] = 'The TVCollector process is already running!';
+$_lang['tvcollector.total_processed'] = 'Total processed resources: [[+updated]].';
 
-$_lang['tvcollector.resource_successfully_updated'] = 'Resource [[+id]]: successfully updated.';
-$_lang['tvcollector.resource_could_not_be_saved'] = 'Resource [[+id]]: could not be saved.';
-$_lang['tvcollector.processed_resources_from'] = 'Processed [[+counter]] resources from [[+resources]].';
-
-
-$_lang['tvcollector.menu_update'] = 'Update';
-$_lang['tvcollector.menu_update_desc'] = 'Update the TVCollector data.';
-$_lang['tvcollector.menu_clear'] = 'Clear';
-$_lang['tvcollector.menu_clear_desc'] = 'Clear the TVCollector data.';
-$_lang['tvcollector.menu_update_clear_desc'] = 'Update or clear the TVCollector data.';
