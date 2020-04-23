@@ -27,6 +27,9 @@ class TVCollectorProcessor extends modProcessor
     /** @var string Absolute path to the lock file. */
     private $lock_file = MODX_CORE_PATH . 'cache/tvcollector.lock';
 
+    /** @var string Absolute path to the message folder. */
+    private $messages = MODX_CORE_PATH . 'cache/registry/mgr/tvcollector';
+
     /**
      * The main method of the processor.
      *
@@ -35,6 +38,7 @@ class TVCollectorProcessor extends modProcessor
     public function process()
     {
         $this->modx->lexicon->load('tvcollector:default');
+        $this->clearOldMessages();
 
         if ($this->isLock()) {
             $this->printAlreadyRunning();
@@ -219,6 +223,16 @@ class TVCollectorProcessor extends modProcessor
     private function unlock()
     {
         unlink($this->lock_file);
+    }
+
+    /**
+     * Deletes old messages.
+     */
+    private function clearOldMessages()
+    {
+        if (is_dir($this->messages)) {
+            array_map('unlink', glob($this->messages . '/*'));
+        }
     }
 
     /**
