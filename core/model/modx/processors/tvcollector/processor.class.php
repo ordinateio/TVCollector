@@ -94,13 +94,9 @@ class TVCollectorProcessor extends modProcessor
                 if (count($TVs) > 0) {
                     $TVCollection = $this->getTVCollection($TVs);
 
-                    $resource->setProperties($TVCollection, 'tvc', false);
-                    if (!$resource->save()) {
-                        $this->printCouldNotBeSaved($resource);
+                    if (!$this->setResourceProperties($resource, $TVCollection)) {
                         continue;
                     }
-
-                    $this->updated++;
                 }
 
                 usleep($this->sleep);
@@ -142,6 +138,27 @@ class TVCollectorProcessor extends modProcessor
     }
 
     /**
+     * Sets properties for a resource.
+     *
+     * @param modResource $resource
+     * @param array $TVCollection
+     * @return bool Returns true if the resource was successfully saved, otherwise returns false.
+     */
+    private function setResourceProperties(modResource $resource, array $TVCollection)
+    {
+        $resource->setProperties($TVCollection, 'tvc', false);
+        if (!$resource->save()) {
+            $this->printCouldNotBeSaved($resource);
+
+            return false;
+        }
+
+        $this->updated++;
+
+        return true;
+    }
+
+    /**
      * Returns true if it is necessary to start the data cleaning process, otherwise returns false.
      *
      * @return bool
@@ -168,13 +185,9 @@ class TVCollectorProcessor extends modProcessor
 
             /** @var modResource $resource */
             foreach ($resources as $resource) {
-                $resource->setProperties(array(), 'tvc', false);
-                if (!$resource->save()) {
-                    $this->printCouldNotBeSaved($resource);
+                if (!$this->setResourceProperties($resource, array())) {
                     continue;
                 }
-
-                $this->updated++;
 
                 usleep($this->sleep);
             }
