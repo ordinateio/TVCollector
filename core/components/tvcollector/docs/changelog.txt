@@ -1,5 +1,15 @@
 Changelog for TVCollector
 
+TVCollector 2.0.0-pl
+-------------------
+- All code has been redesigned.
+- Added deletion of old messages (sometimes new and old messages mixed in the console output).
+- Optimized output to the console (Chrome slowed down when outputting a large number of lines).
+- Optimized RAM consumption.
+- Added lock preventing multiple instances from starting.
+- Added automatic cache clearing.
+- Fixed deprecated warnings from MODX.
+
 TVCollector 1.0.2-pl
 -------------------
 - Bugs fixed
