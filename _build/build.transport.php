@@ -14,7 +14,7 @@ set_time_limit(0);
 // region Defining the necessary variables.
 define('PKG_NAME', 'TVCollector');
 define('PKG_NAME_LOWER', 'tvcollector');
-define('PKG_VERSION', '1.0.2');
+define('PKG_VERSION', '2.0.0');
 define('PKG_RELEASE', 'pl');
 define('PKG_DESCRIPTION', 'Saves additional fields in the resource properties column. The output is available through the tvcollector placeholder.');
 define('ROOT', dirname(dirname(__FILE__)) . '/');
