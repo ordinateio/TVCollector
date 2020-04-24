@@ -25,7 +25,7 @@ class TVCollectorProcessor extends modProcessor
     private $updated = 0;
 
     /** @var string Absolute path to the lock file. */
-    private $lock_file = MODX_CORE_PATH . 'cache/tvcollector.lock';
+    private $lock = MODX_CORE_PATH . 'cache/tvcollector.lock';
 
     /** @var string Absolute path to the message folder. */
     private $messages = MODX_CORE_PATH . 'cache/registry/mgr/tvcollector';
@@ -209,13 +209,13 @@ class TVCollectorProcessor extends modProcessor
      */
     private function isLock()
     {
-        return file_exists($this->lock_file);
+        return file_exists($this->lock);
     }
 
     /** Locking. */
     private function lock()
     {
-        fclose(fopen($this->lock_file, 'w'));
+        fclose(fopen($this->lock, 'w'));
     }
 
     /**
@@ -223,7 +223,7 @@ class TVCollectorProcessor extends modProcessor
      */
     private function unlock()
     {
-        unlink($this->lock_file);
+        unlink($this->lock);
     }
 
     /**
